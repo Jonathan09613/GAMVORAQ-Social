@@ -1,0 +1,83 @@
+name: GAMVORAQ Social | CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy_production:
+        description: "Publicar esta version en Vercel al terminar las pruebas"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gamvoraq-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    name: 1 - Pruebas, revision PWA y compilacion
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Obtener codigo fuente
+        uses: actions/checkout@v4
+      - name: Instalar Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependencias desde package-lock.json
+        run: npm ci
+      - name: Ejecutar pruebas automatizadas
+        run: npm test
+      - name: Comprobar las caracteristicas PWA
+        run: npm run check:pwa
+      - name: Compilar frontend para produccion
+        run: npm run build
+      - name: Comprobar archivos obligatorios de la compilacion
+        run: npm run verify:dist
+      - name: Preparar paquete de liberacion
+        run: npm run package:release
+      - name: Guardar paquete como evidencia descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: gamvoraq-release-${{ github.sha }}
+          path: release/
+          if-no-files-found: error
+          retention-days: 14
+
+  desplegar:
+    name: 2 - Despliegue a Vercel y comprobacion HTTP
+    needs: validar
+    if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.ENABLE_PRODUCTION_DEPLOY == 'true') ||
+      (github.event_name == 'workflow_dispatch' && inputs.deploy_production == true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: ${{ steps.publicar.outputs.url }}
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Obtener codigo fuente
+        uses: actions/checkout@v4
+      - name: Instalar Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Publicar despues de aprobar las pruebas
+        id: publicar
+        run: bash scripts/release/deploy-vercel.sh

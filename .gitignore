@@ -1,0 +1,22 @@
+# Dependencias y compilaciones
+node_modules/
+dist/
+release/
+coverage/
+.vite/
+
+# Credenciales locales: NUNCA subir a GitHub
+.env
+.env.*
+!.env.example
+.vercel/
+supabase/.temp/
+*.pem
+*.key
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

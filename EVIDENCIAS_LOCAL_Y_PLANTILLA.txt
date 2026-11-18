@@ -1,0 +1,22 @@
+GAMVORAQ Social - Producto 3
+EVIDENCIAS TECNICAS LOCALES (no reemplazan capturas de GitHub y Vercel)
+
+Comprobacion ejecutada en el entorno de preparacion del material:
+- npm test: 102 casos, 102 aprobados, 0 fallos.
+- npm run check:pwa: 16/16 capacidades PWA declaradas; validacion satisfactoria.
+- Compilacion npm run build en este entorno Linux: NO VALIDADA porque las
+  dependencias de la copia original incluyen binarios de Windows; en GitHub
+  Actions se reinstalan con npm ci sobre Ubuntu y se valida la compilacion.
+
+DATOS QUE DEBEN COMPLETARSE CON RESULTADOS REALES:
+- URL de repositorio: ___________________________
+- Commit SHA de la ejecucion: ____________________
+- Fecha y hora del job CI: ______________________
+- Resultado de npm run build en GitHub: __________
+- URL de produccion Vercel: _____________________
+- Fecha del despliegue: _________________________
+- Resultado del smoke test: _____________________
+- Evidencia de monitoreo: _______________________
+- Evidencia de backend Supabase: ________________
+
+No copiar estos campos como si fueran resultados si no se han comprobado.

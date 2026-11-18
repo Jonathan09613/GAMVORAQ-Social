@@ -1,0 +1,36 @@
+/* v8 · Instalación en todos los dispositivos y vitrina de ideas */
+.auth-ideas-title { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--acc2); margin: 0 0 -10px; font-weight: 600; }
+.auth-install { margin-top: 10px; }
+
+.net-bar.install { background: linear-gradient(90deg, rgba(var(--acc-rgb), .16), rgba(var(--acc-rgb), .05)); color: #fff; }
+.net-bar.install .btn + .btn { margin-left: 0; } .net-bar.install small { font-size: inherit; }
+
+.inst-hero { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: rgba(var(--acc-rgb), .08); margin-bottom: 14px; }
+.inst-hero small { display: block; color: var(--muted); font-size: 12px; } .inst-hero b { font-size: 15px; }
+.inst-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(var(--acc-rgb), .18); color: var(--acc2); flex: none; }
+.inst-steps { counter-reset: st; list-style: none; padding: 0; margin: 14px 0; display: grid; gap: 10px; }
+.inst-steps li { counter-increment: st; display: flex; gap: 12px; align-items: flex-start; line-height: 1.45; font-size: 14px; }
+.inst-steps li::before { content: counter(st); flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--acc); color: #fff; font-weight: 700; font-size: 13px; }
+.inst-perks { list-style: none; padding: 12px 14px; margin: 0 0 14px; border-radius: 12px; background: rgba(255, 255, 255, .03); display: grid; gap: 8px; font-size: 13px; color: #d9cfd5; }
+.inst-perks li { display: flex; gap: 10px; align-items: center; } .inst-perks svg { color: var(--acc2); flex: none; }
+.inst-more { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; }
+.inst-more summary { cursor: pointer; font-weight: 600; font-size: 14px; display: flex; gap: 8px; align-items: center; list-style: none; }
+.inst-more summary::-webkit-details-marker { display: none; }
+.inst-alt { margin-top: 12px; } .inst-alt b { display: flex; gap: 6px; align-items: center; font-size: 13.5px; }
+.inst-alt ol { margin: 6px 0 0; padding-left: 20px; color: #cfc4cb; font-size: 13px; line-height: 1.5; }
+.inst-share { margin-bottom: 10px; }
+.inst-done { display: flex; gap: 12px; align-items: flex-start; color: #9ef0cb; margin-bottom: 14px; } .inst-done b { color: #fff; }
+
+/* App instalada: respeta muescas y barra de gestos */
+@media (display-mode: standalone) {
+  .bottom-nav { padding-bottom: max(6px, env(safe-area-inset-bottom)); }
+  body { overscroll-behavior-y: contain; }
+}
+
+@media (max-width: 1000px) {
+  .auth-stage .auth-features { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; gap: 12px; padding-bottom: 6px; margin: 0 -20px; padding-inline: 20px; scrollbar-width: none; }
+  .auth-stage .auth-features::-webkit-scrollbar { display: none; }
+  .auth-stage .auth-features li { flex: 0 0 min(78%, 280px); scroll-snap-align: start; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, .03); }
+  .auth-ideas-title { margin: 0 0 -6px; }
+  .net-bar.install { padding-block: 8px; } .net-bar.install small { display: none; } .net-bar.install span { flex: 1; min-width: 0; }
+}

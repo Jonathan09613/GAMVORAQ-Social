@@ -1,0 +1,19 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    { "type": "ColumnSet", "columns": [
+      { "type": "Column", "width": "auto", "items": [{ "type": "Image", "url": "${icon}", "size": "Small", "altText": "GAMVORAQ" }] },
+      { "type": "Column", "width": "stretch", "items": [
+        { "type": "TextBlock", "text": "${title}", "weight": "Bolder", "size": "Medium", "wrap": true },
+        { "type": "TextBlock", "text": "${subtitle}", "isSubtle": true, "wrap": true, "spacing": "None" }
+      ] }
+    ] }
+  ],
+  "actions": [
+    { "type": "Action.OpenUrl", "title": "Estoy disponible", "url": "${base}/?action=available" },
+    { "type": "Action.OpenUrl", "title": "Agendar", "url": "${base}/?action=schedule" },
+    { "type": "Action.OpenUrl", "title": "Mensajes", "url": "${base}/?tab=messages" }
+  ]
+}

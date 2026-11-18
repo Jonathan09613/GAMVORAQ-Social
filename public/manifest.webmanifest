@@ -1,0 +1,201 @@
+{
+  "id": "/",
+  "name": "GAMVORAQ Social",
+  "short_name": "GAMVORAQ",
+  "description": "Red social gamer que te cuida: chat traducido a tu idioma, «Estoy disponible» y agenda de partidas, química de equipo y Pasaporte GG, modo primer día, sala tranquila, ligas locales, segunda oportunidad, modo familia y VORA con IA.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "background_color": "#08060a",
+  "theme_color": "#08060a",
+  "orientation": "any",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "categories": [
+    "social",
+    "games",
+    "entertainment"
+  ],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Estoy disponible para jugar",
+      "short_name": "Disponible",
+      "description": "Avisa a tu squad que puedes jugar ahora",
+      "url": "/?action=available",
+      "icons": [
+        {
+          "src": "/icons/shortcut-available.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Agendar partida",
+      "short_name": "Agendar",
+      "description": "Programa una partida con tu squad",
+      "url": "/?action=schedule",
+      "icons": [
+        {
+          "src": "/icons/shortcut-schedule.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Buscar equipo",
+      "short_name": "Jugar",
+      "description": "Encuentra compañeros con buena química",
+      "url": "/?tab=play",
+      "icons": [
+        {
+          "src": "/icons/shortcut-play.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Mis mensajes",
+      "short_name": "Mensajes",
+      "description": "Chats traducidos con tu gente",
+      "url": "/?tab=messages",
+      "icons": [
+        {
+          "src": "/icons/shortcut-messages.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Squad con chat traducido automáticamente"
+    },
+    {
+      "src": "/screenshots/home-narrow.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Inicio en el móvil"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
+  },
+  "handle_links": "preferred",
+  "edge_side_panel": {
+    "preferred_width": 420
+  },
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "file_handlers": [
+    {
+      "action": "/?open=file",
+      "accept": {
+        "image/png": [
+          ".png"
+        ],
+        "image/jpeg": [
+          ".jpg",
+          ".jpeg"
+        ],
+        "image/webp": [
+          ".webp"
+        ],
+        "image/gif": [
+          ".gif"
+        ]
+      },
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ],
+      "launch_type": "single-client"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+gamvoraq",
+      "url": "/?link=%s"
+    }
+  ],
+  "widgets": [
+    {
+      "name": "GAMVORAQ rápido",
+      "short_name": "GAMVORAQ",
+      "description": "Atajos para marcarte disponible, agendar partida o abrir tus mensajes.",
+      "tag": "gvq-quick",
+      "ms_ac_template": "/widgets/quick-template.json",
+      "data": "/widgets/quick-data.json",
+      "type": "application/json",
+      "screenshots": [
+        {
+          "src": "/widgets/quick-screenshot.png",
+          "sizes": "600x400",
+          "label": "Widget de atajos de GAMVORAQ"
+        }
+      ],
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ],
+      "auth": false,
+      "update": 86400
+    }
+  ]
+}

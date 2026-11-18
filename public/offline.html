@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08060a">
+<title>Sin conexión · GAMVORAQ</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:24px;background:radial-gradient(700px 420px at 50% 0,rgba(225,29,46,.22),transparent 70%),#08060a;color:#f5f0f2;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;text-align:center}
+  main{max-width:420px}img{width:84px;height:84px;border-radius:22px;box-shadow:0 0 60px rgba(225,29,46,.4)}h1{font-size:26px;margin:22px 0 10px;letter-spacing:-.01em}p{color:#aaa0a9;margin:0 0 22px}
+  button,a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 24px;border-radius:14px;border:0;font:600 15px system-ui;text-decoration:none;cursor:pointer;background:#e11d2e;color:#fff;box-shadow:0 8px 24px rgba(225,29,46,.3)}
+  small{display:block;margin-top:22px;color:#7a707a}
+</style>
+</head>
+<body>
+<main>
+  <img src="/icons/icon-192.png" alt="" width="84" height="84">
+  <h1>Estás sin conexión</h1>
+  <p>No pudimos cargar GAMVORAQ. Si ya habías entrado antes, abre la app de nuevo para ver tu última sesión guardada; los mensajes que escribas se enviarán al reconectar.</p>
+  <button onclick="location.reload()">Reintentar</button>
+  <small>VORA te espera cuando vuelva la conexión.</small>
+</main>
+<script>addEventListener('online',()=>location.reload())</script>
+</body>
+</html>

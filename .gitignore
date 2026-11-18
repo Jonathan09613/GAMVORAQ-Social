@@ -1,7 +1,7 @@
 # Dependencias y compilaciones
 node_modules/
 dist/
-release/
+/release/
 coverage/
 .vite/
 
